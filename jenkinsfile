@@ -7,8 +7,25 @@ pipeline{
       }
     }
     stage ('TEST') {
-      steps {
-        echo "This is TEST stage"
+      parallel{
+        stage('TEST_CHROME'){
+
+          steps {
+            echo "This is TEST in Chrome client"
+          }
+        }
+        stage('TEST_SAFARI'){
+
+          steps {
+            echo "This is TEST in Safari client"
+          }
+        }
+        stage('TEST_OPERA'){
+
+          steps {
+            echo "This is TEST in Opera client"
+          }
+        }
       }
     }
     stage ('DEPLOY') {
