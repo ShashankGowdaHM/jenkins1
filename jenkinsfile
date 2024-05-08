@@ -29,8 +29,22 @@ pipeline{
       }
     }
     stage ('DEPLOY') {
-      steps {
-        echo "This is DEPLOY stage"
+      parallel{
+        stage('QA'){  
+          steps {
+            echo "This is QA DEPLOY stage"
+          }
+        }
+        stage('UAT'){  
+          steps {
+            echo "This is UAT Deployment stage"
+          }
+        }
+        stage('PROD'){  
+          steps {
+            echo "This is Production Deployment stage"
+          }
+        }
       }
     }
   }
